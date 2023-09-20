@@ -5,6 +5,7 @@ pipeline {
         stage('Execute') {
             steps {
                 echo "$pwd"
+                echo "${Branch}"
             }
         }
     }
