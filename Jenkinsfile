@@ -14,14 +14,14 @@ pipeline {
                           extensions: [],
                           gitTool: 'Default',
                           submoduleCfg: [],
-                          userRemoteConfigs: [[url: 'https://github.com/jenkinsci/git-parameter-plugin.git']]
+                          userRemoteConfigs: [[url: 'https://github.com/DMalladi/LearnJenkins.git']]
                         ])
             }
         }
 
         stage('Code Execution') {
             steps {
-                echo "${params.Branch}"
+                echo "${Branch}"
                 echo "Main Test"
             }
         }
