@@ -1,17 +1,21 @@
 pipeline {
     agent any
     parameters {
-    gitParameter branchFilter: 'origin/(.*)', defaultValue: 'main', name: 'BRANCH', type: 'PT_BRANCH'
-  }
-
+        gitParameter name: 'BRANCH',
+                     type: 'PT_BRANCH',
+                     defaultValue: 'main'
+    }
     stages {
-        stage('Execute') {
+        stage('Example') {
             steps {
-                git branch: "${params.BRANCH}", url: 'https://github.com/jenkinsci/git-parameter-plugin.git'
-
-                
-                echo "$pwd"
-                echo "${Branch}"
+                checkout([$class: 'GitSCM',
+                          branches: [[name: "${params.BRANCH}"]],
+                          doGenerateSubmoduleConfigurations: false,
+                          extensions: [],
+                          gitTool: 'Default',
+                          submoduleCfg: [],
+                          userRemoteConfigs: [[url: 'https://github.com/jenkinsci/git-parameter-plugin.git']]
+                        ])
             }
         }
     }
