@@ -22,7 +22,7 @@ pipeline {
         stage('Code Execution') {
             steps {
                 echo "${params.Branch}"
-                echo "Main Branch"
+                echo "Main Test"
             }
         }
     }
